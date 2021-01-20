@@ -1,0 +1,39 @@
+<html>
+
+<head>
+  <title>
+    Blunt's Radar
+  </title>
+  <script>
+    window.addEventListener('load', function (event) {
+      var vars = {};
+      var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+        vars[key] = value;
+      });
+      document.getElementById("topFrame").setAttribute("src", decodeURIComponent(vars['topUrl']));
+      document.getElementById("bottomFrame").setAttribute("src", decodeURIComponent(vars['bottomUrl']));
+    });
+  </script>
+  <style>
+    .iframes {
+      background-color: white;
+      min-width: 750;
+      min-height: 170;
+    }
+
+    .topFrame {
+      margin-top: -75px;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <iframe class="iframes topFrame" src="" frameborder="0" id="topFrame"></iframe>
+  </div>
+  <div>
+    <iframe class="iframes" src="" frameborder="0" id="bottomFrame"></iframe>
+  </div>
+</body>
+
+</html>

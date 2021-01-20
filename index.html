@@ -1,0 +1,49 @@
+<html>
+
+<head>
+  <title>
+    Blunt's Radar
+  </title>
+  <style>
+    .inputs {
+      text-align: center;
+      padding-top: 10px;
+    }
+
+    .main {
+      margin: auto;
+      width: 400px;
+      height: 200px;
+      padding-top: 100px;
+    }
+  </style>
+  <script>
+
+    function openRadar() {
+      var topUrl = document.getElementById("topUrl").value;
+      var bottomUrl = document.getElementById("bottomUrl").value;
+
+      window.open("radar.html?topUrl=" + topUrl + "&bottomUrl=" + bottomUrl, "_blank", "toolbar=no,scrollbars=no,resizable=no,top=500,left=600,width=750,height=500");
+    }
+
+  </script>
+</head>
+
+<body>
+  <div class="main">
+    <div class="inputs">
+      <div>Soft URL</div>
+      <input type="text" id="topUrl" name="topUrl">
+    </div>
+    <div class="inputs">
+      <div>Bottom URL</div>
+      <input type=" text" id="bottomUrl" name="bottomUrl">
+    </div>
+
+    <div class="inputs">
+      <button onclick="openRadar()">Go!</button>
+    </div>
+  </div>
+</body>
+
+</html>
