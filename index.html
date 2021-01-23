@@ -1,9 +1,16 @@
+<!DOCTYPE html>
 <html>
-
 <head>
   <title>
     Blunt's Radar
   </title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cirrus-ui@0.6.0/dist/cirrus.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <style>
     .inputs {
       text-align: center;
@@ -20,28 +27,23 @@
   <script>
 
     function openRadar() {
-      var topUrl = document.getElementById("topUrl").value;
-      var bottomUrl = document.getElementById("bottomUrl").value;
+      var url = document.getElementById("url").value;
 
-      window.open("radar.html?topUrl=" + topUrl + "&bottomUrl=" + bottomUrl, "_blank", "toolbar=no,scrollbars=no,resizable=no,top=500,left=600,width=750,height=500");
+      window.open("radar.html?url=" + url, "_blank", "toolbar=no,scrollbars=no,resizable=no,top=500,left=600,width=695,height=500");
     }
 
   </script>
 </head>
 
 <body>
-  <div class="main">
+  <div class="main content">
     <div class="inputs">
-      <div>Sofascore URL</div>
-      <input type="text" id="topUrl" name="topUrl">
-    </div>
-    <div class="inputs">
-      <div>WilliamHill URL</div>
-      <input type=" text" id="bottomUrl" name="bottomUrl">
+      <h3>Sofascore URL</h3>
+      <input type="text" id="url" name="url" />
     </div>
 
     <div class="inputs">
-      <button onclick="openRadar()">Go!</button>
+      <button class="btn-info" onclick="openRadar()">Go!</button>
     </div>
   </div>
 </body>
