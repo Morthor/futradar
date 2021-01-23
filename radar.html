@@ -36,7 +36,14 @@
         // innerDiv.setAttribute('class', 'innerDiv');
         // innerDiv.setAttribute('style', 'z-index:' + totalFrames);
 
-        var url = document.getElementById('url').value;
+        var iframeCode = document.getElementById("url").value;
+      
+        var doc = new DOMParser().parseFromString(iframeCode, 'text/html')
+        console.log(doc);
+        console.log(doc.querySelector('iframe') );
+        var iframe_el = doc.querySelector('iframe');
+        var url = iframe_el.getAttribute('src');
+
         document.getElementById('url').setAttribute('value', '');
 
         var iframe = document.createElement('iframe');

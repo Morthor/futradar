@@ -27,7 +27,13 @@
   <script>
 
     function openRadar() {
-      var url = document.getElementById("url").value;
+      var iframeCode = document.getElementById("url").value;
+      
+      var doc = new DOMParser().parseFromString(iframeCode, 'text/html')
+      console.log(doc);
+      console.log(doc.querySelector('iframe') );
+      var iframe_el = doc.querySelector('iframe');
+      var url = iframe_el.getAttribute('src');
 
       window.open("radar.html?url=" + url, "_blank", "toolbar=no,scrollbars=no,resizable=no,top=500,left=600,width=695,height=500");
     }
@@ -38,7 +44,7 @@
 <body>
   <div class="main content">
     <div class="inputs">
-      <h3>Sofascore URL</h3>
+      <h3>Sofascore HTML iFrame code</h3>
       <input type="text" id="url" name="url" />
     </div>
 
