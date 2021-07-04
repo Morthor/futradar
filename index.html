@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>
     Blunt's Radar
   </title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cirrus-ui@0.6.0/dist/cirrus.min.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
@@ -25,29 +27,23 @@
     }
   </style>
   <script>
-
     function openRadar() {
-      var iframeCode = document.getElementById("url").value;
-      
-      var doc = new DOMParser().parseFromString(iframeCode, 'text/html')
-      console.log(doc);
-      console.log(doc.querySelector('iframe') );
-      var iframe_el = doc.querySelector('iframe');
-      var url = iframe_el.getAttribute('src');
+      var url = document.getElementById("url").value;
+      var wh_id = document.getElementById("wh_id").value;
 
-      window.open("radar.html?url=" + url, "_blank", "toolbar=no,scrollbars=no,resizable=no,top=500,left=600,width=695,height=500");
+      window.open("test.html?url=" + url + "&id=" + wh_id, "_blank", "toolbar=no,scrollbars=no,resizable=no,top=500,left=600,width=630,height=400");
     }
-
   </script>
 </head>
 
 <body>
   <div class="main content">
     <div class="inputs">
-      <h3>Sofascore HTML iFrame code</h3>
+      <h4>Sofascore URL</h4>
       <input type="text" id="url" name="url" />
+      <h4>WH id</h4>
+      <input type="text" id="wh_id" name="wh_id" />
     </div>
-
     <div class="inputs">
       <button class="btn-info" onclick="openRadar()">Go!</button>
     </div>

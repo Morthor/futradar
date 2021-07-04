@@ -1,0 +1,128 @@
+<html>
+
+<head>
+  <title>
+    Blunt's Radar
+  </title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cirrus-ui@0.6.0/dist/cirrus.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script>
+    window.addEventListener('load', function (event) {
+
+      var vars = {};
+      var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+        vars[key] = value;
+      });
+      document.getElementById("frame1").setAttribute("src", decodeURIComponent(vars['url']));
+    });
+    var totalFrames = 1;
+
+    function closeFrame(frameId) {
+      console.log(frameId);
+      document.getElementById('frame' + frameId + '_div').remove();
+    }
+
+    function addFrame() {
+      totalFrames++;
+
+      var mainDiv = document.createElement('div');
+      mainDiv.setAttribute('id', 'frame' + totalFrames + '_div');
+
+      // var innerDiv = document.createElement('div');
+      // innerDiv.setAttribute('class', 'innerDiv');
+      // innerDiv.setAttribute('style', 'z-index:' + totalFrames);
+
+      var iframeCode = document.getElementById("url").value;
+
+      var doc = new DOMParser().parseFromString(iframeCode, 'text/html')
+      console.log(doc);
+      console.log(doc.querySelector('iframe'));
+      var iframe_el = doc.querySelector('iframe');
+      var url = iframe_el.getAttribute('src');
+
+      document.getElementById('url').setAttribute('value', '');
+
+      var iframe = document.createElement('iframe');
+      iframe.setAttribute('src', url);
+      iframe.setAttribute('frameborder', '0');
+      iframe.setAttribute('class', 'iframes topFrame');
+
+      var close = document.createElement('a');
+      close.setAttribute('href', '#');
+      close.setAttribute('class', 'Close');
+      close.setAttribute('onclick', 'closeFrame(\'' + totalFrames + '\')');
+      close.append('close');
+
+      mainDiv.append(iframe);
+      mainDiv.append(close);
+      // mainDiv.append(innerDiv);
+
+      document.getElementById('frames').prepend(mainDiv);
+    }
+  </script>
+  <style>
+    .iframes {
+      background-color: white;
+      width: 655;
+      min-height: 170;
+      text-align: center;
+    }
+
+    .topFrame {
+      overflow: hidden;
+      /* float: left; */
+      /* padding-top: -75; */
+    }
+
+    .innerDiv {
+      /* top: -75px; */
+      height: 90px;
+      /* position: relative; */
+    }
+
+    .main {
+      margin-top: 40px;
+    }
+
+    .inputs {
+      text-align: center;
+      padding-top: 10px;
+    }
+
+    .close {
+      /* float: left; */
+    }
+  </style>
+</head>
+
+<body>
+  <div class="">
+    <div class="row">
+      <div class="col" id="frames">
+        <div id="frame1_div" class="card">
+          <iframe class="iframes topFrame" src="" frameborder="0" id="frame1"></iframe>
+          <a href="#" class="close u u-C" onclick="closeFrame('1')">Close</a>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col main">
+        <div class="inputs">
+          <div>Add another URL</div>
+          <input type="text" id="url" name="url">
+        </div>
+        <div class="inputs">
+          <button class="btn-info" onclick="addFrame()">Add</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
